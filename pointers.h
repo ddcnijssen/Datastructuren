@@ -27,46 +27,53 @@ template <class T> class pointers{
 }
 
 template <class T>
-pointers<T>::pointers(){
+pointers<T>::pointers(int & count){
+	vakje* item;
+	item = new vakje;
+	item->info = '?';
+	item->next = NULL;
 	count = 0;
 }
 
 template <class T>
-bool pointers<T>::isEmpty(vakje* & item){
-	if(count = 0) return false;
+bool pointers<T>::isEmpty(int count){
+	if(count = 0) return true;
 	return false;
 }
 
 template <class T>
-void pointers<T>::clear(vakje* & item){
-	vakje* hulp;
+void pointers<T>::clear(vakje* & item, int & count){
 	while(count > 0){
-		hulp = item;
-		item = item->next;
-		delete hulp;
+		pop(count);
 	}
 }
 
 template <class T>
-bool pointers<T>::push(T newItem){
+bool pointers<T>::push(T newItem, int & count){
 	vakje* hulp;
 	hulp = new vakje;
 	hulp->info = newItem;
 	hulp->next = item;
 	item = hulp;
 	count++;
+	return true;
 }
 
 template <class T>
-bool pointers<T>::pop(){
+bool pointers<T>::pop(int & count){
+	if(isEmpty(count) == true) return false;
 	vakje*hulp;
-	
+	hulp = item;
+	newItem = item->info;
+	item = item->next;
+	delete hulp; 
 	count--;
+	return true;
 }
 
 template <class T>
-bool pointers<T>::top(topItem){
-	while(item != NULL){
-
-	}
+bool pointers<T>::top(T & topItem, int count){
+	if(isEmpty(count) == true) return false;
+	topitem = item->info;
+	return true;
 }

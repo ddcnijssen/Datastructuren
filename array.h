@@ -9,14 +9,6 @@
 template <class T> class array{
 	public:
 		/**
-		* @function create
-		* @abstract maakt een lege stapel
-		* @pre exacte beschrijving preconditie
-		* @post exacte beschrijving postconditie
-		wat is er veranderd na het uitvoeren van de functie?
-		**/
-		void create();
-		/**
 		* @function isEmpty
 		* @abstract bepaalt of de stapel leeg is
 		* @return geeft true als de stapel leeg is en false als de stapel niet leeg is
@@ -68,22 +60,19 @@ template <class T> class array{
 }  
 
 template <class T>
-array<T>::array(){
+array<T>::array(int & count){
 	count = 0;
 }
 
 template <class T>
-bool array<T>::isEmpty(){
+bool array<T>::isEmpty(int count){
 	int i = 0;
-	while(stapel[i] == NULL){
-		if(i = 50) return true;
-		i++;
-	}
+	if(count == 0) return true;
 	return false;
 }
 
 template <class T>
-void array<T>::clear(){
+void array<T>::clear(int & count){
 	for(int i = 0; i <= 50; i++){
 		stapel[i] = NULL;
 	}
@@ -91,7 +80,7 @@ void array<T>::clear(){
 }
 
 template <class T>
-bool array<T>::push(T newItem){
+bool array<T>::push(T newItem, int & count){
 	if(count >= 50) return false;
 	stapel[count + 1] = newItem;
 	count++;
@@ -99,7 +88,7 @@ bool array<T>::push(T newItem){
 }
 
 template <class T>
-bool array<T>::pop(){
+bool array<T>::pop(int & count){
 	if(count <= 0) return false;
 	stapel[count] = NULL;
 	count--;
@@ -107,8 +96,10 @@ bool array<T>::pop(){
 }
 
 template <class T>
-bool array<T>::top(){
-	if(count == 0) return false;
-	cout << "Bovenste element van de stapel is: " << stapel[count] << endl;
+bool array<T>::top(T & topItem, int count){
+	if(isEmpty(count) == true) return false;
+	topItem = stapel[count];
+	//VVV gebruiken in main VVV
+	//cout << "Bovenste element van de stapel is: " << stapel[count] << endl;
 	return true;
 }
