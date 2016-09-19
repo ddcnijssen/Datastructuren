@@ -8,28 +8,30 @@
 
 template <class T> class vakje{
 	public:
+		vakje<T>* next;
+		vakje<T>* item;
+		vakje<T>* hulp;
 		T info;
-		vakje* next;
-}
+};
 
 template <class T> class pointers{
-	public:
-		void create();
-		bool isEmpty();
-		void clear();
-		bool push(newItem);
-		bool pop();
-		bool top(topItem);
+   public:
+	   pointers(int & count);
+		void create(int & count);
+		bool isEmpty(int count);
+		void clear(int & count, vakje<T>* & item);
+		bool push(T newItem, int & count, vakje<T>* & item);
+		bool pop(int & count, vakje<T>* & item);
+		bool top(T & topItem, int count, vakje<T>* item);
 
 	private:
-		int & count;
-		vakje* item;
-}
+		int & count;		
+};
 
 template <class T>
 pointers<T>::pointers(int & count){
-	vakje* item;
-	item = new vakje;
+	vakje<T>* item;
+	item = new vakje<T>;
 	item->info = '?';
 	item->next = NULL;
 	count = 0;
@@ -42,16 +44,16 @@ bool pointers<T>::isEmpty(int count){
 }
 
 template <class T>
-void pointers<T>::clear(vakje* & item, int & count){
+void pointers<T>::clear(int & count, vakje<T>* &item){
 	while(count > 0){
-		pop(count);
+		pop(count, item);
 	}
 }
 
 template <class T>
-bool pointers<T>::push(T newItem, int & count){
-	vakje* hulp;
-	hulp = new vakje;
+bool pointers<T>::push(T newItem, int & count, vakje<T>* & item){
+	vakje<T>* hulp;
+	hulp = new vakje<T>;
 	hulp->info = newItem;
 	hulp->next = item;
 	item = hulp;
@@ -60,11 +62,11 @@ bool pointers<T>::push(T newItem, int & count){
 }
 
 template <class T>
-bool pointers<T>::pop(int & count){
+bool pointers<T>::pop(int & count, vakje<T>* & item){
 	if(isEmpty(count) == true) return false;
-	vakje*hulp;
+	vakje<T>* hulp;
 	hulp = item;
-	newItem = item->info;
+	item->info = item->next->info;
 	item = item->next;
 	delete hulp; 
 	count--;
@@ -72,8 +74,8 @@ bool pointers<T>::pop(int & count){
 }
 
 template <class T>
-bool pointers<T>::top(T & topItem, int count){
+bool pointers<T>::top(T & topItem, int count, vakje<T>* item){
 	if(isEmpty(count) == true) return false;
-	topitem = item->info;
+	topItem = item->info;
 	return true;
 }

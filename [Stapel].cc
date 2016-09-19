@@ -7,7 +7,7 @@
 **/
 #include <iostream>
 #include "array.h"
-#include "pointer.h"
+#include "pointers.h"
 #include "STL_vector.h"
 #include "STL_stack.h"
 

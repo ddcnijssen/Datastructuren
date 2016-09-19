@@ -8,6 +8,7 @@
 
 template <class T> class array{
 	public:
+	   array(int & count);
 		/**
 		* @function isEmpty
 		* @abstract bepaalt of de stapel leeg is
@@ -16,7 +17,7 @@ template <class T> class array{
 		* @post exacte beschrijving postconditie
 		wat is er veranderd na het uitvoeren van de functie?
 		**/
-		bool isEmpty();
+		bool isEmpty(int count);
 		/**
 		* @function clear
 		* @abstract maakt de stapel leeg
@@ -24,7 +25,7 @@ template <class T> class array{
 		* @post exacte beschrijving postconditie
 		wat is er veranderd na het uitvoeren van de functie?
 		**/
-		void clear();
+		void clear(int & count);
 		/**
 		* @function push
 		* @abstract voegt een newItem toe op de top van de stapel, en geeft terug of de opdracht gelukt is
@@ -34,7 +35,7 @@ template <class T> class array{
 		* @post exacte beschrijving postconditie
 		wat is er veranderd na het uitvoeren van de functie?
 		**/
-		bool push(T newItem);
+		bool push(T newItem, int & count);
 		/**
 		* @function pop
 		* @abstract verwijdert het bovenste element van de stapel, en geeft terug of de opdracht gelukt is
@@ -43,7 +44,7 @@ template <class T> class array{
 		* @post exacte beschrijving postconditie
 		wat is er veranderd na het uitvoeren van de functie?
 		**/
-		bool pop();
+		bool pop(int & count);
 		/**
 		* @function top
 		* @abstract geeft het bovenste stapelelement, zonder dit te verwijderen, en geeft terug of de opdracht gelukt is
@@ -52,12 +53,12 @@ template <class T> class array{
 		* @post exacte beschrijving postconditie
 		wat is er veranderd na het uitvoeren van de functie?
 		**/
-		bool top();
+		bool top(T & topItem, int count);
 		T stapel[50];
 
 	private:
 		int & count;
-}  
+};  
 
 template <class T>
 array<T>::array(int & count){
