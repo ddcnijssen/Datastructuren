@@ -3,9 +3,10 @@
 * @author Nijssen, Desley (s1474146)
 * @author Slotegraaf, Minke (s1430793)
 * @file [Stapel].cc
-* @date datum laatste wijziging
+* @date 19 september 2016
 **/
 #include <iostream>
+#include <string>
 #include "array.h"
 #include "pointers.h"
 #include "STL_vector.h"
@@ -14,19 +15,32 @@
 using namespace std;
 
 template<class T>
-void backspace(string invoer)
+void undo(string invoer)
 {
 	T invoerstack;
+  
+	int i = 0;
 
-	// Nog te implementeren: "backspace simulatie"
-	invoerstack.push(invoer[0]);
-	invoerstack.push('b');
-	invoerstack.pop();
+	const char* invoerStr = invoer.c_str();
 
-	// Nog te implementeren: Resultaat uitvoeren
-	cout << invoerstack.top();
+	while(invoerStr[i] != '\n' && invoerStr[i] != ' ' && invoerStr[i] != '\0'){
+	// Nog te implementeren: "backspace simulatie" TODO
+	  
+		if(invoerStr[i] == '*'){
+			invoerstack.pop();
+		}
+		else invoerstack.push(invoerStr[i]);
+		i++;
+	}
+	
+	char topItem;
+
+	// Nog te implementeren: Resultaat uitvoeren TODO
+	cout << invoerstack.top(topItem);
+	cout << topItem;
 	cout << endl;
 }
+
 
 int main()
 {
@@ -34,9 +48,11 @@ int main()
 	string invoer;
 	cin >> invoer;
 
-        // Voer vier keer dezelfde test uit, op verschillende implementaties.
-	// Voor je datastructuur ArrayStack, bijvoorbeeld:
-	backspace<ArrayStack<char> >(invoer);
+  // Voer vier keer dezelfde test uit, op verschillende implementaties.
+	undo <array<char> >(invoer);
+	//undo <pointers<char> >(invoer); 
+	//undo <STL_stack<char> >(invoer);
+	//undo <STL_vector<char> >(invoer);
 
 	return 0;
 }

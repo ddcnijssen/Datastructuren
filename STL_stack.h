@@ -3,7 +3,7 @@
 * @author Nijssen, Desley (s1474146)
 * @author Slotegraaf, Minke (s1430793)
 * @file STL_stack.h
-* @date 14 september 2016
+* @date 19 september 2016
 **/
 #include <stack>
 
